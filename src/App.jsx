@@ -88,7 +88,8 @@ export default function StylishCalendar() {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
-          className="text-gray-600 hover:text-black text-2xl"
+          className="px-4 py-2 bg-white shadow-md border border-gray-200 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition duration-200"
+          aria-label="Previous Month"
         >
           &#8592;
         </button>
@@ -97,23 +98,31 @@ export default function StylishCalendar() {
         </h2>
         <button
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-          className="text-gray-600 hover:text-black text-2xl"
+          className="px-4 py-2 bg-white shadow-md border border-gray-200 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition duration-200"
+          aria-label="Next Month"
         >
           &#8594;
         </button>
       </div>
 
       {/* Weekday Headers */}
-      <div className="grid grid-cols-7 border-t border-b py-3 text-center font-semibold bg-gray-50">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
-          <div
-            key={day}
-            className={i === new Date().getDay() ? "text-blue-600" : "text-gray-500"}
-          >
-            {day}
-          </div>
-        ))}
+      <div className="grid grid-cols-7 border-t border-b text-center font-semibold bg-gray-50">
+  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => {
+    const isCurrentDay = i === new Date().getDay();
+
+    return (
+      <div
+        key={day}
+        className={`py-3 ${
+          isCurrentDay ? "bg-blue-100 rounded-lg text-blue-600" : "text-gray-500"
+        }`}
+      >
+        {day}
       </div>
+    );
+  })}
+</div>
+
 
 
       {/* Calendar Days */}
@@ -131,7 +140,7 @@ export default function StylishCalendar() {
             <div
               key={idx}
               onClick={() => setSelectedDate(day)}
-              className={`h-32 overflow-hidden rounded-lg p-2 border relative cursor-pointer flex flex-col transition-all
+              className={`h-32 overflow-y-auto rounded-lg p-2 border relative cursor-pointer flex flex-col transition-all
                 ${isCurrent ? "bg-white" : "bg-gray-50 text-gray-400"}
                 ${isSelected ? "ring-2 ring-blue-500" : ""}
                 ${isTodayDate ? "border-2 border-blue-500" : ""}
@@ -147,7 +156,7 @@ export default function StylishCalendar() {
               </div>
 
               {/* Events rendered at bottom */}
-              <div className="mt-auto space-y-1 text-xs overflow-auto max-h-[88px]">
+              <div className="mt-auto space-y-1 text-xs">
                 {dayEvents.map((event, i) => (
                   <div
                     key={i}
