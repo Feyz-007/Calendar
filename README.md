@@ -1,12 +1,75 @@
-# React + Vite
+# Calendar Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive calendar built with **React**, **TailwindCSS**, and **date-fns** that displays scheduled events from a static JSON file. This application is designed for clarity, simplicity, and efficient scheduling — with support for monthly navigation, event visualization, and automatic highlighting of the current date.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## Expanding the ESLint configuration
+👉 [View the Live App on Vercel](https://your-vercel-url.vercel.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## 🚀 Features
+
+### 🗓️ Calendar Display
+- Displays the **current month and year** by default.
+- Dates are arranged in a **7-column grid**, aligned to days of the week.
+
+### 🔄 Month Navigation
+- Navigate between **previous and next months** using dedicated navigation buttons.
+- The view updates seamlessly with retained event and layout styling.
+
+### 📍 Current Date Highlight
+- The **current date is visually emphasized** in the calendar for quick reference.
+
+---
+
+## 📌 Events Integration
+
+### 📂 Static Event Source
+- Events are loaded from a static JSON file located in the `public` folder (`/public/events.json`).
+- Each event includes:
+  - `title`
+  - `date` (in `YYYY-MM-DD` format)
+  - `startTime` and `endTime`
+  - `duration` (optional)
+  - `color` (for event-specific styling)
+
+### 📅 Event Display
+- Events are displayed directly **within their corresponding date cells**.
+- Each date lists all events scheduled for that day with distinct styling.
+
+### ⚠️ Conflict Handling
+- Supports **multiple events on the same date**:
+  - Each event is **color-coded** for clarity.
+  - Events are **stacked visually** to show overlap.
+  - Structure allows for future enhancements like conflict warnings or sorting.
+
+---
+
+## 🛠 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/react-calendar.git
+cd react-calendar
+```
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+### 3. Run the App
+
+```bash
+npm run dev
+```
+### 4.Access the App
+
+open your browser and go to:
+```bash
+http://localhost:5173
+```
+
+
