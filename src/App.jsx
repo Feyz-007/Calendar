@@ -55,22 +55,20 @@ export default function StylishCalendar() {
     return acc;
   }, {});
 
-  const today = new Date();
-
   return (
-    <div className="p-4 sm:p-6 md:p-10 font-sans max-w-7xl mx-auto">
+    <div className="p-10 font-sans max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+      <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">Calendar</h1>
-          <p className="text-sm text-gray-500">Full Event Schedule</p>
+          <h1 className="text-2xl font-bold text-gray-800">Calendar</h1>
+          <p className="text-gray-500">Full Event Schedule</p>
         </div>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+        <div className="flex items-center space-x-4">
           <div className="bg-gray-100 p-1 rounded-lg flex space-x-2">
             {["Weekly", "Monthly", "Timeline"].map((view) => (
               <button
                 key={view}
-                className={`px-3 py-1.5 text-sm rounded-md ${
+                className={`px-4 py-2 text-sm rounded-md ${
                   view === "Monthly"
                     ? "bg-white shadow font-bold"
                     : "text-gray-600 hover:bg-white"
@@ -80,7 +78,7 @@ export default function StylishCalendar() {
               </button>
             ))}
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-md">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
             + Add Event
           </button>
         </div>
@@ -90,71 +88,70 @@ export default function StylishCalendar() {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
-          className="text-gray-600 hover:text-black text-xl"
+          className="text-gray-600 hover:text-black text-2xl"
         >
           &#8592;
         </button>
-        <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-semibold text-gray-800">
           {format(currentMonth, "MMMM yyyy")}
         </h2>
         <button
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-          className="text-gray-600 hover:text-black text-xl"
+          className="text-gray-600 hover:text-black text-2xl"
         >
           &#8594;
         </button>
       </div>
 
       {/* Weekday Headers */}
-      <div className="grid grid-cols-7 border-t border-b py-2 text-center font-medium text-xs sm:text-sm text-gray-500 bg-gray-50">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => (
+      <div className="grid grid-cols-7 border-t border-b py-3 text-center font-semibold bg-gray-50">
+        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
           <div
             key={day}
-            className={`py-1 ${
-              format(today, "EEE") === day ? "text-blue-600 font-bold" : ""
-            }`}
+            className={i === new Date().getDay() ? "text-blue-600" : "text-gray-500"}
           >
             {day}
           </div>
         ))}
       </div>
 
+
       {/* Calendar Days */}
       <div
-        className="grid grid-cols-7 gap-1 sm:gap-2 text-center mt-2"
-        style={{ minHeight: "60vh" }}
+        className="grid grid-cols-7 gap-2 text-center mt-2"
+        style={{ height: "calc(100vh - 300px)" }}
       >
         {days.map((day, idx) => {
           const isCurrent = isSameMonth(day, currentMonth);
           const isSelected = isSameDay(day, selectedDate);
-          const isTodayDate = isSameDay(day, today);
+          const isTodayDate = isSameDay(day, new Date());
           const dayEvents = eventsForMonth[format(day, "yyyy-MM-dd")] || [];
 
           return (
             <div
               key={idx}
               onClick={() => setSelectedDate(day)}
-              className={`h-24 sm:h-28 md:h-32 overflow-hidden rounded-md p-1 sm:p-2 border relative cursor-pointer flex flex-col transition-all
+              className={`h-32 overflow-hidden rounded-lg p-2 border relative cursor-pointer flex flex-col transition-all
                 ${isCurrent ? "bg-white" : "bg-gray-50 text-gray-400"}
                 ${isSelected ? "ring-2 ring-blue-500" : ""}
                 ${isTodayDate ? "border-2 border-blue-500" : ""}
               `}
             >
-              <div className="flex items-center justify-between text-xs font-bold">
+              <div className="flex items-center justify-between text-sm font-bold">
                 <span>{format(day, "d")}</span>
                 {isTodayDate && (
-                  <span className="text-[10px] bg-blue-100 text-blue-600 px-1 py-[1px] rounded-full">
+                  <span className="text-[10px] bg-blue-100 text-blue-600 px-2 py-[1px] rounded-full">
                     Today
                   </span>
                 )}
               </div>
 
               {/* Events rendered at bottom */}
-              <div className="mt-auto space-y-0.5 text-[10px] sm:text-xs overflow-auto max-h-[72px]">
+              <div className="mt-auto space-y-1 text-xs overflow-auto max-h-[88px]">
                 {dayEvents.map((event, i) => (
                   <div
                     key={i}
-                    className="p-0.5 rounded-md text-white"
+                    className="p-1 rounded-md text-white"
                     style={{ backgroundColor: event.color || "#4f46e5" }}
                   >
                     <strong>{event.title}</strong>
