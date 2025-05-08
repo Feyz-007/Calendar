@@ -78,7 +78,9 @@ export default function StylishCalendar() {
               </button>
             ))}
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+          <button 
+            onClick={() => alert("Static events only. This button is for future use.")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
             + Add Event
           </button>
         </div>
