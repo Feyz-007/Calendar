@@ -1,0 +1,44 @@
+[
+  {
+    "startTime": "00:00",
+    "endTime": "01:30",
+    "color": "#f6be23",
+    "title": "Daily Standup",
+    "date": "2025-05-27"
+  },
+  {
+    "startTime": "4:30",
+    "endTime": "7:30",
+    "color": "#f6501e",
+    "title": "Weekly catchup",
+    "date": "2025-05-09"
+  },
+  {
+    "startTime": "9:00",
+    "endTime": "11:00",
+    "color": "#8e44ad",
+    "title": "Project Planning",
+    "date": "2024-01-10"
+  },
+  {
+    "startTime": "9:00",
+    "endTime": "11:00",
+    "color": "#8e44ad",
+    "title": "Project Planning",
+    "date": "2025-05-09"
+  },
+  {
+    "startTime": "00:00",
+    "endTime": "01:30",
+    "color": "#f6be23",
+    "title": "Daily Standup",
+    "date": "2025-05-01"
+  },
+  {
+    "startTime": "18:00",
+    "endTime": "20:00",
+    "color": "#e879f9",
+    "title": "Tech Meetup: AI Trends",
+    "date": "2025-05-04"
+  }
+]
