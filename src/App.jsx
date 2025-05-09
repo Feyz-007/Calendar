@@ -139,8 +139,7 @@ export default function StylishCalendar() {
 
       {/* Calendar Grid */}
       <div
-        className="grid grid-cols-7 gap-2 text-center mt-2"
-        style={{ height: "calc(100vh - 300px)" }}
+        className="grid grid-cols-7 gap-2 text-center mt-2 auto-rows-[minmax(100px,_auto)]"
       >
         {days.map((day, idx) => {
           const isCurrent = isSameMonth(day, currentMonth);
