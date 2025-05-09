@@ -32,7 +32,6 @@ A responsive calendar built with **React**, **TailwindCSS**, and **date-fns** th
   - `title`
   - `date` (in `YYYY-MM-DD` format)
   - `startTime` and `endTime`
-  - `duration` (optional)
   - `color` (for event-specific styling)
 
 ### 📅 Event Display
@@ -42,8 +41,6 @@ A responsive calendar built with **React**, **TailwindCSS**, and **date-fns** th
 ### ⚠️ Conflict Handling
 - Supports **multiple events on the same date**:
   - Each event is **color-coded** for clarity.
-  - Events are **stacked visually** to show overlap.
-  - Structure allows for future enhancements like conflict warnings or sorting.
 
 ---
 
@@ -52,8 +49,8 @@ A responsive calendar built with **React**, **TailwindCSS**, and **date-fns** th
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/react-calendar.git
-cd react-calendar
+https://github.com/Feyz-007/Calendar.git
+cd Calendar
 ```
 ### 2. Install Dependencies
 
